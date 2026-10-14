@@ -3,166 +3,507 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Portafolio Profesional</title>
-    <!-- Bootstrap 5 CSS CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="description" content="Portafolio personal de Axl Joseph Trinidad Huarancca, estudiante de Desarrollo de Sistemas de la Información.">
+    <title>Axl Trinidad | Portafolio</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Tipografía -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        .hero-section {
-            background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
-            color: white;
-            padding: 100px 0;
+        :root {
+            --fondo: #0b1020;
+            --panel: #111a2e;
+            --panel-claro: #17233b;
+            --texto: #f4f7ff;
+            --suave: #a8b4cc;
+            --acento: #66e3c4;
+            --acento-2: #8ca8ff;
+            --borde: rgba(255, 255, 255, .10);
         }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+        body {
+            margin: 0;
+            background: var(--fondo);
+            color: var(--texto);
+            font-family: "DM Sans", sans-serif;
+        }
+        h1, h2, h3, h4, .navbar-brand { font-family: "Space Grotesk", sans-serif; }
+        p { line-height: 1.8; }
+        .text-muted-custom { color: var(--suave) !important; }
+        .section-space { padding: 100px 0; }
+        .section-kicker {
+            color: var(--acento);
+            text-transform: uppercase;
+            letter-spacing: .18em;
+            font-size: .78rem;
+            font-weight: 700;
+        }
+
+        /* Navegación */
+        .navbar {
+            background: rgba(11, 16, 32, .88);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--borde);
+        }
+        .navbar-brand { letter-spacing: -.04em; }
+        .brand-mark {
+            display: inline-grid;
+            place-items: center;
+            width: 38px;
+            height: 38px;
+            margin-right: 9px;
+            border-radius: 12px;
+            color: var(--fondo);
+            background: var(--acento);
+            font-weight: 700;
+        }
+        .navbar .nav-link { color: #c4cee1; margin-left: 12px; }
+        .navbar .nav-link:hover, .navbar .nav-link:focus { color: var(--acento); }
+        .navbar-toggler { border-color: var(--borde); }
+
+        /* Portada */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 155px 0 100px;
+            background:
+                radial-gradient(circle at 80% 20%, rgba(102, 227, 196, .12), transparent 28%),
+                radial-gradient(circle at 12% 80%, rgba(140, 168, 255, .13), transparent 30%),
+                var(--fondo);
+        }
+        .hero h1 {
+            max-width: 850px;
+            font-size: clamp(2.7rem, 6vw, 5.4rem);
+            font-weight: 700;
+            line-height: 1.04;
+            letter-spacing: -.065em;
+        }
+        .gradient-text {
+            color: var(--acento);
+        }
+        .hero-description { max-width: 650px; color: var(--suave); font-size: 1.1rem; }
+        .hero-photo-wrap {
+            width: min(290px, 75vw);
+            aspect-ratio: 1;
+            margin: 0 auto;
+            padding: 9px;
+            border: 1px solid rgba(102, 227, 196, .5);
+            border-radius: 32px;
+            transform: rotate(3deg);
+            background: linear-gradient(135deg, rgba(102, 227, 196, .15), rgba(140, 168, 255, .1));
+            box-shadow: 0 25px 80px rgba(0, 0, 0, .28);
+        }
+        .hero-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 25px;
+            transform: rotate(-3deg);
+        }
+        .btn-accent {
+            color: #08131b;
+            background: var(--acento);
+            border: 1px solid var(--acento);
+            font-weight: 700;
+            padding: 12px 21px;
+        }
+        .btn-accent:hover { color: #08131b; background: #8af0d8; border-color: #8af0d8; }
+        .btn-outline-soft {
+            color: var(--texto);
+            border: 1px solid var(--borde);
+            padding: 12px 21px;
+        }
+        .btn-outline-soft:hover { color: var(--acento); border-color: var(--acento); }
+        .scroll-note { color: var(--suave); font-size: .9rem; }
+
+        /* Sobre mí */
+        .about-section { background: #0e1527; border-top: 1px solid var(--borde); border-bottom: 1px solid var(--borde); }
+        .about-panel {
+            height: 100%;
+            padding: 30px;
+            border: 1px solid var(--borde);
+            border-radius: 22px;
+            background: var(--panel);
+        }
+        .about-icon {
+            display: grid;
+            place-items: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 15px;
+            color: var(--acento);
+            background: rgba(102, 227, 196, .10);
+            font-size: 1.35rem;
+        }
+        .skill-pill {
+            display: inline-block;
+            padding: 8px 13px;
+            margin: 5px 5px 0 0;
+            border: 1px solid var(--borde);
+            border-radius: 50px;
+            color: #dce5f6;
+            background: rgba(255,255,255,.035);
+            font-size: .9rem;
+        }
+
+        /* Proyectos */
         .project-card {
-            transition: transform 0.3s ease;
+            height: 100%;
+            overflow: hidden;
+            border: 1px solid var(--borde);
+            border-radius: 20px;
+            background: var(--panel);
+            transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
         }
         .project-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-7px);
+            border-color: rgba(102, 227, 196, .55);
+            box-shadow: 0 22px 45px rgba(0,0,0,.22);
+        }
+        .project-image {
+            width: 100%;
+            height: 215px;
+            object-fit: cover;
+            background: var(--panel-claro);
+        }
+        .project-card .card-body { padding: 25px; }
+        .project-tag {
+            display: inline-block;
+            color: var(--acento);
+            background: rgba(102, 227, 196, .09);
+            border-radius: 50px;
+            padding: 5px 10px;
+            font-size: .75rem;
+            font-weight: 700;
+        }
+        .project-card .card-text { color: var(--suave); }
+        .project-link { color: var(--acento); text-decoration: none; font-weight: 700; }
+        .project-link:hover { color: #a3f4e2; }
+
+        /* Proceso */
+        .process-box {
+            padding: 30px;
+            height: 100%;
+            border-radius: 18px;
+            border: 1px solid var(--borde);
+            background: linear-gradient(145deg, var(--panel), rgba(23,35,59,.5));
+        }
+        .process-number {
+            color: var(--acento);
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        /* Contacto */
+        .contact-panel {
+            padding: clamp(28px, 5vw, 60px);
+            border: 1px solid var(--borde);
+            border-radius: 28px;
+            background:
+                radial-gradient(circle at 100% 0, rgba(102,227,196,.12), transparent 35%),
+                var(--panel);
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px;
+            border: 1px solid var(--borde);
+            border-radius: 15px;
+            color: var(--texto);
+            text-decoration: none;
+            overflow-wrap: anywhere;
+        }
+        .contact-item:hover { border-color: var(--acento); color: var(--acento); }
+        .contact-item i { color: var(--acento); font-size: 1.25rem; }
+        footer { border-top: 1px solid var(--borde); color: var(--suave); }
+        .social-link {
+            display: inline-grid;
+            place-items: center;
+            width: 42px;
+            height: 42px;
+            margin-left: 6px;
+            border: 1px solid var(--borde);
+            border-radius: 50%;
+            color: var(--texto);
+            text-decoration: none;
+        }
+        .social-link:hover { color: var(--acento); border-color: var(--acento); }
+
+        @media (max-width: 767.98px) {
+            .hero { padding: 125px 0 75px; text-align: center; }
+            .hero-description { margin-left: auto; margin-right: auto; }
+            .section-space { padding: 75px 0; }
+            .navbar .nav-link { margin-left: 0; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+    <!-- Navegación principal -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">Mi Portafolio</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="#inicio">
+                <span class="brand-mark">A</span> Axl Trinidad
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menú de navegación">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
+            <div class="collapse navbar-collapse justify-content-end" id="menuPrincipal">
+                <ul class="navbar-nav align-items-lg-center">
                     <li class="nav-item"><a class="nav-link" href="#sobre-mi">Sobre mí</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#habilidades">Habilidades</a></li>
                     <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0"><a class="btn btn-accent btn-sm" href="#contacto">Hablemos <i class="bi bi-arrow-up-right ms-1"></i></a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero-section text-center mt-5">
-        <div class="container">
-            <h1 class="display-4 fw-bold">
-                Hola, soy Axl Joseph Trinidad Huarancca
-            </h1>
-            <img src="img/perfil.jpg"
-                alt="Fotografía de Axl Joseph Trinidad Huarancca"
-                class="rounded-circle img-thumbnail shadow mb-4"
-                width="180"
-                height="180">
-            <p class="lead my-3">Desarrollador Web & Diseñador Front-End</p>
-            <a href="#proyectos" class="btn btn-light btn-lg fw-bold mt-3 shadow-sm">Ver Proyectos</a>
-        </div>
-    </header>
-
-    <!-- Sobre mí -->
-    <section id="sobre-mi" class="py-5 bg-light">
-        <div class="container py-4">
-            <h2 class="text-center fw-bold mb-4">Sobre mí</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <p class="fs-5 text-secondary">
-                        Soy Axl Joseph Trinidad Huarancca, estudiante de
-                        Desarrollo de Sistemas de la Información, interesado en el desarrollo
-                        web, la programación y las tecnologías de la información.
-                        Me gusta aprender nuevas herramientas y crear páginas
-                        web modernas, atractivas y adaptables a diferentes
-                        dispositivos utilizando HTML, CSS y Bootstrap.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Proyectos -->
-    <section id="proyectos" class="py-5">
-        <div class="container py-4">
-            <h2 class="text-center fw-bold mb-5">Mis Proyectos</h2>
-            <div class="row g-4">
-                <!-- Proyecto 1 -->
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm project-card">
-
-                    <img src="img/proyecto1.jpg"
-                        class="card-img-top"
-                        alt="Proyecto de desarrollo web">
-
-                    <div class="card-body">
-                            <h5 class="card-title fw-bold">Proyecto 1</h5>
-                            <p class="card-text text-secondary">Aplicación web interactiva desarrollada con Bootstrap y JavaScript para la gestión de tareas.</p>
-                            <a href="#" class="btn btn-outline-primary btn-sm">Ver detalles</a>
+    <main>
+        <!-- Portada -->
+        <header class="hero" id="inicio">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-7">
+                        <p class="section-kicker mb-3"><i class="bi bi-circle-fill me-2 small"></i>Portafolio personal</p>
+                        <h1 class="mb-4">Ideas digitales,<br><span class="gradient-text">soluciones reales.</span></h1>
+                        <p class="hero-description mb-4">
+                            Hola, soy <strong class="text-white">Axl Joseph Trinidad Huarancca</strong>,
+                            estudiante de Desarrollo de Sistemas de la Información. Me interesa crear
+                            experiencias web claras, útiles y adaptables a distintos dispositivos.
+                        </p>
+                        <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+                            <a href="#proyectos" class="btn btn-accent">Explorar proyectos <i class="bi bi-arrow-down-right ms-2"></i></a>
+                            <a href="#sobre-mi" class="btn btn-outline-soft">Conocer más</a>
                         </div>
+                        <p class="scroll-note mt-4 mb-0"><i class="bi bi-code-slash me-2"></i>Aprendiendo y construyendo, proyecto a proyecto.</p>
                     </div>
-                </div>
-                <!-- Proyecto 2 -->
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm project-card">
-                        <img src="img/proyecto2.jpg"
-                            class="card-img-top"
-                            alt="Proyecto de desarrollo web">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Proyecto 2</h5>
-                            <p class="card-text text-secondary">Sitio web corporativo totalmente responsivo optimizado para SEO y rendimiento móvil.</p>
-                            <a href="#" class="btn btn-outline-primary btn-sm">Ver detalles</a>
+                    <div class="col-lg-5">
+                        <div class="hero-photo-wrap">
+                            <!-- Guarda tu foto como img/perfil.jpg -->
+                            <img src="img/perfil.jpg" class="hero-photo" alt="Fotografía de Axl Joseph Trinidad Huarancca">
                         </div>
-                    </div>
-                </div>
-                <!-- Proyecto 3 -->
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm project-card">
-                        <img src="img/proyecto3.jpg"
-                            class="card-img-top"
-                            alt="Proyecto de desarrollo web">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Proyecto 3</h5>
-                            <p class="card-text text-secondary">Plataforma de comercio electrónico con carrito de compras y pasarela simulada.</p>
-                            <a href="#" class="btn btn-outline-primary btn-sm">Ver detalles</a>
-                        </div>
+                        <p class="text-center text-muted-custom small mt-4 mb-0">Estudiante · Tecnología · Desarrollo web</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </header>
 
-    <!-- Contacto -->
-    <section id="contacto" class="py-5 bg-dark text-white">
-        <div class="container py-4 text-center">
-            <h2 class="fw-bold mb-4">Contacto</h2>
-            <p class="fs-5 mb-4">¿Tienes algún proyecto en mente o quieres contactarme? Escríbeme.</p>
-            
-            <p class="fs-5 mb-3">
-                ¿Tienes alguna consulta o propuesta? Contáctame.
-            </p>
+        <!-- Sobre mí -->
+        <section id="sobre-mi" class="about-section section-space">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-5">
+                        <p class="section-kicker">Un poco sobre mí</p>
+                        <h2 class="display-5 fw-bold mb-4">Curiosidad por aprender.<br><span class="gradient-text">Ganas de crear.</span></h2>
+                        <p class="text-muted-custom">
+                            Soy estudiante de Desarrollo de Sistemas de la Información y me interesa
+                            comprender cómo la tecnología puede resolver necesidades reales. Disfruto
+                            explorar herramientas, practicar programación y mejorar mis proyectos paso a paso.
+                        </p>
+                        <p class="text-muted-custom mb-0">
+                            Mi objetivo es seguir desarrollando mis conocimientos y participar en proyectos
+                            donde pueda aportar, aprender y crecer profesionalmente.
+                        </p>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <div class="about-panel">
+                                    <div class="about-icon mb-4"><i class="bi bi-window-stack"></i></div>
+                                    <h3 class="h5 fw-bold">Desarrollo web</h3>
+                                    <p class="text-muted-custom mb-0">Diseño de páginas organizadas, claras y fáciles de navegar.</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="about-panel">
+                                    <div class="about-icon mb-4"><i class="bi bi-lightbulb"></i></div>
+                                    <h3 class="h5 fw-bold">Resolución de problemas</h3>
+                                    <p class="text-muted-custom mb-0">Aprender a analizar errores y encontrar soluciones prácticas.</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="about-panel">
+                                    <div class="about-icon mb-4"><i class="bi bi-phone"></i></div>
+                                    <h3 class="h5 fw-bold">Diseño adaptable</h3>
+                                    <p class="text-muted-custom mb-0">Interfaces que se ajustan a computadoras, tabletas y celulares.</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="about-panel">
+                                    <div class="about-icon mb-4"><i class="bi bi-people"></i></div>
+                                    <h3 class="h5 fw-bold">Trabajo en equipo</h3>
+                                    <p class="text-muted-custom mb-0">Compartir ideas, recibir sugerencias y mejorar continuamente.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <p>
-                <i class="bi bi-envelope-fill me-2"></i>
-                dsi747099252026@jpardo.edu.pe
-            </p>
+        <!-- Habilidades -->
+        <section id="habilidades" class="section-space">
+            <div class="container">
+                <div class="row align-items-end mb-4 g-3">
+                    <div class="col-lg-8">
+                        <p class="section-kicker">Herramientas y aprendizaje</p>
+                        <h2 class="display-5 fw-bold mb-0">Habilidades en desarrollo</h2>
+                    </div>
+                    <div class="col-lg-4">
+                        <p class="text-muted-custom mb-0">Tecnologías que utilizo o estoy aprendiendo en mi formación.</p>
+                    </div>
+                </div>
+                <div class="about-panel">
+                    <span class="skill-pill"><i class="bi bi-filetype-html me-1"></i> HTML5</span>
+                    <span class="skill-pill"><i class="bi bi-filetype-css me-1"></i> CSS3</span>
+                    <span class="skill-pill"><i class="bi bi-bootstrap me-1"></i> Bootstrap 5</span>
+                    <span class="skill-pill"><i class="bi bi-database me-1"></i> Bases de datos</span>
+                    <span class="skill-pill"><i class="bi bi-code-slash me-1"></i> Programación</span>
+                    <span class="skill-pill"><i class="bi bi-git me-1"></i> Git y GitHub</span>
+                    <p class="small text-muted-custom mt-3 mb-0">Tecnologías y programas que representan fielmente mi nivel de aprendizaje.</p>
+                </div>
+            </div>
+        </section>
 
-            <p>
-                <i class="bi bi-telephone-fill me-2"></i>
-                +51 987 263 646
-            </p>
+        <!-- Proyectos -->
+        <section id="proyectos" class="about-section section-space">
+            <div class="container">
+                <div class="row align-items-end mb-5 g-3">
+                    <div class="col-lg-8">
+                        <p class="section-kicker">Trabajos seleccionados</p>
+                        <h2 class="display-5 fw-bold mb-0">Proyectos destacados</h2>
+                    </div>
+                    <div class="col-lg-4">
+                        <p class="text-muted-custom mb-0">Una muestra de ideas y ejercicios que puedo seguir ampliando durante mi aprendizaje.</p>
+                    </div>
+                </div>
 
-            <a href="mailto:dsi747099252026@jpardo.edu.pe"
-            class="btn btn-primary btn-lg">
-                <i class="bi bi-envelope-fill me-2"></i>
-                Enviar correo
-            </a>
+                <div class="row g-4">
+                    <!-- Proyecto 1 -->
+                    <div class="col-md-6 col-lg-4">
+                        <article class="card project-card">
+                            <img src="img/proyecto1.jpg" class="project-image" alt="Vista previa de una página web" loading="lazy">
+                            <div class="card-body d-flex flex-column">
+                                <span class="project-tag mb-3 align-self-start">Diseño web</span>
+                                <h3 class="h4 fw-bold" style="color: #66e3c4;">Página web responsiva</h3>
+                                <p class="card-text flex-grow-1">Diseño de una página con secciones organizadas, navegación sencilla y componentes de Bootstrap.</p>
+                                <a href="#contacto" class="project-link mt-3">Consultar proyecto <i class="bi bi-arrow-up-right ms-1"></i></a>
+                            </div>
+                        </article>
+                    </div>
 
-        </div>
-    </section>
+                    <!-- Proyecto 2 -->
+                    <div class="col-md-6 col-lg-4">
+                        <article class="card project-card">
+                            <img src="img/proyecto2.jpg" class="project-image" alt="Vista previa de un sistema de información" loading="lazy">
+                            <div class="card-body d-flex flex-column">
+                                <span class="project-tag mb-3 align-self-start">Sistemas</span>
+                                <h3 class="h4 fw-bold" style="color: #66e3c4;">Sistema de información</h3>
+                                <p class="card-text flex-grow-1">Propuesta académica para organizar datos y presentar información de forma clara para los usuarios.</p>
+                                <a href="#contacto" class="project-link mt-3">Consultar proyecto <i class="bi bi-arrow-up-right ms-1"></i></a>
+                            </div>
+                        </article>
+                    </div>
 
-    <!-- Footer -->
-    <footer class="text-center py-3 bg-black text-white-50">
-        <div class="container">
-            <small>&copy; 2026 [Tu Nombre]. Todos los derechos reservados.</small>
+                    <!-- Proyecto 3 -->
+                    <div class="col-md-6 col-lg-4">
+                        <article class="card project-card">
+                            <img src="img/proyecto3.jpg" class="project-image" alt="Vista previa de una tienda virtual" loading="lazy">
+                            <div class="card-body d-flex flex-column">
+                                <span class="project-tag mb-3 align-self-start">Comercio electrónico</span>
+                                <h3 class="h4 fw-bold" style="color: #66e3c4;">Diseño de tienda virtual</h3>
+                                <p class="card-text flex-grow-1">Maqueta visual de una tienda con tarjetas de productos, categorías y una estructura preparada para crecer.</p>
+                                <a href="#contacto" class="project-link mt-3">Consultar proyecto <i class="bi bi-arrow-up-right ms-1"></i></a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <p class="small text-muted-custom mt-4 mb-0"><i class="bi bi-info-circle me-2"></i>Proyectos aún en desarrollo para fines académicos.</p>
+            </div>
+        </section>
+
+        <!-- Forma de trabajo -->
+        <section class="section-space">
+            <div class="container">
+                <p class="section-kicker">Mi enfoque</p>
+                <h2 class="display-5 fw-bold mb-5">Cómo abordo un proyecto</h2>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="process-box">
+                            <div class="process-number mb-3">01</div>
+                            <h3 class="h5 fw-bold">Comprender</h3>
+                            <p class="text-muted-custom mb-0">Identificar el objetivo, las necesidades y el contenido que debe incluir la página.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="process-box">
+                            <div class="process-number mb-3">02</div>
+                            <h3 class="h5 fw-bold">Diseñar y construir</h3>
+                            <p class="text-muted-custom mb-0">Organizar las secciones y crear la interfaz utilizando HTML, CSS y componentes Bootstrap.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="process-box">
+                            <div class="process-number mb-3">03</div>
+                            <h3 class="h5 fw-bold">Probar y mejorar</h3>
+                            <p class="text-muted-custom mb-0">Revisar enlaces, imágenes y visualización en distintos tamaños de pantalla.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacto -->
+        <section id="contacto" class="about-section section-space">
+            <div class="container">
+                <div class="contact-panel">
+                    <div class="row align-items-center g-5">
+                        <div class="col-lg-6">
+                            <p class="section-kicker">Contacto</p>
+                            <h2 class="display-5 fw-bold mb-3">¿Conversamos sobre una idea?</h2>
+                            <p class="text-muted-custom mb-0">Si deseas realizar una consulta o compartir una propuesta, puedes escribirme mediante mi correo institucional.</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <a class="contact-item mb-3" href="mailto:dsi747099252026@jpardo.edu.pe">
+                                <i class="bi bi-envelope-fill"></i>
+                                <span><small class="d-block text-muted-custom">Correo de contacto</small>dsi747099252026@jpardo.edu.pe</span>
+                            </a>
+                            <div class="contact-item">
+                                <i class="bi bi-telephone-fill"></i>
+                                <span><small class="d-block text-muted-custom">Teléfono de contacto</small>+51 959 206 591</span>
+                            </div>
+                            <a href="mailto:dsi747099252026@jpardo.edu.pe" class="btn btn-accent mt-4">Enviar un correo <i class="bi bi-send ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="py-4">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+            <p class="mb-0 small">© 2026 Axl Joseph Trinidad Huarancca. Portafolio personal.</p>
+            <a class="small text-decoration-none text-muted-custom" href="#inicio"><i class="bi bi-arrow-up-circle me-1"></i>Volver al inicio</a>
         </div>
     </footer>
 
-    <!-- Bootstrap 5 JS Bundle CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JavaScript: necesario para el menú móvil -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
